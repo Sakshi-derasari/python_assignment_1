@@ -1,0 +1,50 @@
+1. Introduction to Python and its Features (simple, high-level, interpreted language).
+ans. Python is a powerful, high-level, general-purpose programming language.  
+Python is widely used for various applications, including web development, data analysis, 
+artificial intelligence, scientific computing, automation, and more. Its simple and readable 
+syntax makes it beginner-friendly and an excellent choice for both novice and experienced programmers.
+
+Features :
+Simple and Easy to Learn
+High-Level Language
+Interpreted Language
+Extensive Standard Library
+Open-Source
+Automatic memory management
+
+2. History and evolution of Python.
+ans. Python, a high-level, general-purpose programming language, was developed by Guido van Rossum in the late 1980s 
+and was first released in 1991. Its design philosophy emphasizes code readability and simplicity, making it accessible 
+to both beginner and experienced programmers.
+
+Today, Python is one of the most popular languages globally, known for its simplicity, versatility, and extensive 
+library support in fields like web development, AI, and data science.
+
+3. Advantages of using Python over other programming languages.
+ans. Easy to Learn and Use - Simple Syntax: Python's syntax is clean, intuitive, and similar to English, making it beginner-friendly.
+Shorter Code: Tasks that require multiple lines in other languages can often be done in fewer lines using Python.
+
+Versatility - used in diverse fields like data science, web development, etc.
+
+Extensive Libraries and Frameworks - comes with a vast standard library and third-party libraries, saving time and effort.
+
+Open Source and Free - Python is free to use, distribute, and modify, with active contributions from the global developer community.
+
+Interpreted Language - Python is executed line by line, making it easier to debug and test code compared to compiled languages.
+
+
+4. Installing Python and setting up the development environment (Anaconda, PyCharm, or VS
+Code).
+ans. Downloaded and installed from official website.
+VS code is the code editor that supports python through extensions.
+Download and installed VS code and start coding.
+VS Code is great for general-purpose Python development, offering flexibility and extensibility.
+
+
+5. Writing and executing your first Python program.
+ans.
+The first program i have executed was basic program to print hello world to check the functionality of programming and then other functions get added.
+print("hello world")
+
+it was easy to program , every programmer compiles and executes it at beginner level.
+

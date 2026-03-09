@@ -1,0 +1,30 @@
+1. Introduction to conditionalstatements: if, else, elif.
+ans.
+if: Checks a condition and executes the block of code if the condition is True.
+elif: Checks another condition if the previous if or elif was False. You can have multiple elif statements.
+else: Executes the block of code if all the conditions above it are False.
+example:
+age = 25
+
+if age < 18:
+    print("You are a minor.")
+elif age >= 18 and age <= 65:
+    print("You are an adult.")  # This will be executed because age is between 18 and 65
+else:
+    print("You are a senior citizen.")
+
+
+
+2. Nested if-else conditions.
+ans.A nested if-else statement refers to an if-else block that is placed inside another if or else block.
+This allows you to make more complex decisions and handle multiple layers of conditions.
+example: 
+age = 20
+
+if age >= 18:  # Outer if
+    if age < 21:  # Nested if
+        print("You are an adult, but not yet eligible to drink alcohol in some countries.")
+    else:
+        print("You are an adult and eligible to drink alcohol.")
+else:
+    print("You are a minor.")

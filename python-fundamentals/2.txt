@@ -1,0 +1,22 @@
+
+1. Understanding Python’s PEP 8 guidelines.
+ans. PEP 8 stands for Python Enhancement Proposal 8. 
+It is the style guide for Python code, providing recommendations on how to write clean, readable, and consistent Python code. 
+The primary goal of PEP 8 is to ensure that Python code is easy to read and maintain, 
+especially in large teams and open-source projects.
+
+2. Indentation, comments, and naming conventions in Python.
+ans. 4 spaces per indentation level: Python uses indentation to define the structure of the code (instead of curly braces or other markers).
+Inline Comments: Used to explain a line of code. Start with # .
+variables,classes,constatnts - These conventions help make Python code more readable and consistent across projects.
+
+3.Writing readable and maintainable code.
+ans. 
+To write readable and maintainable Python code:
+Use meaningful names for variables, functions, and classes.
+Write modular code that adheres to the single responsibility principle.
+Follow PEP 8 guidelines for consistent formatting and style.
+Add clear comments and docstrings to explain the why behind complex code.
+Keep the code simple, avoiding overly clever or complex solutions.
+Handle exceptions and errors appropriately.
+Write tests and use version control.

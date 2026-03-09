@@ -1,0 +1,38 @@
+
+1. Introduction to for and while loops.
+ans. The for loop is used to iterate over a sequence (such as a list, tuple, string, or range) and execute a block of code for each item in the sequence.
+
+for variable in sequence:
+for i in range(5):
+    print(i)
+
+The while loop repeatedly executes a block of code as long as a given condition is True. If the condition becomes False, the loop will stop.
+count = 0
+
+while count < 5:
+    print(count)
+    count += 1  # Increment the count to avoid infinite loop
+
+for loop: Best used when you know the number of iterations or need to iterate over a sequence (list, range, string, etc.).
+while loop: Ideal when the number of iterations is not known in advance, and you want the loop to run until a condition becomes False.
+
+
+2. How loops work in Python.
+ans.The for loop in Python is an iterative loop used to iterate over a sequence (such as a list, string, tuple, or range). 
+It is particularly useful when you know in advance the number of iterations you need to perform, or when you want to iterate over each item in a collection or sequence.
+
+Initialization: The for loop starts by initializing the loop variable to the first element in the sequence.
+
+Iteration: The loop executes the code inside the block for each item in the sequence. For each iteration, the loop variable takes the next value from the sequence.
+
+Completion: When all the items in the sequence have been processed, the loop terminates and the program continues with the next section of code after the loop.
+
+
+3.Using loops with collections (lists, tuples, etc.).
+ans.In Python, collections like lists, tuples, strings, and dictionaries are commonly used to store multiple items.
+
+list  : A list is an ordered collection of items that can be of different types. Lists are mutable, meaning their elements can be modified.
+Tuple : A tuple is an ordered collection like a list, but it is immutable, meaning its elements cannot be changed after creation.
+String : A string is a collection of characters. It is iterable, so you can use a for loop to iterate over each character in the string.
+Dictionary : A dictionary is an unordered collection of key-value pairs. When iterating through a dictionary, you can choose to loop over the keys, values, or both.
+Sets : A set is an unordered collection of unique elements. Since sets are unordered, the order of elements is not guaranteed during iteration.

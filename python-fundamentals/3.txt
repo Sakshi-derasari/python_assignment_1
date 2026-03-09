@@ -1,0 +1,39 @@
+
+1. Understanding data types: integers, floats,strings, lists, tuples, dictionaries,sets.
+ans. 
+ 1. Integers (int) - An integer is a whole number, without a fractional part.
+a = 10   # an integer
+b = -7   # negative integer
+sum = a + b  # sum will be 3
+
+ 2. Floats (float) - A float represents a number that has a decimal point.
+a = 3.14  # a float number
+b = -1.5  # another float number
+product = a * b  # product will be -4.71
+
+ 3. Strings (str) - A string is a sequence of characters enclosed in single or double quotes. It represents text data.
+greeting = "Hello, World!"  # a string
+name = "John"
+message = greeting + " " + name  # Concatenation: "Hello, World! John"
+
+ 4. Lists (list) - A list is an ordered collection of elements, which can be of any data type (integers, floats, strings, etc.).
+fruits = ['apple', 'banana', 'cherry']  # a list of strings
+fruits.append('orange')  # Add 'orange' to the list
+print(fruits)  # Output: ['apple', 'banana', 'cherry', 'orange']
+
+
+2. Python variables and memory allocation.
+ans.
+ 1.variables:
+In Python, variables are references to objects stored in memory. When you assign a value to a variable, Python creates the object in memory and binds the variable to it.
+
+ 2.Memory allocation:
+Memory allocation is managed automatically by Python's memory manager, using techniques like reference counting and garbage collection to reclaim unused memory.
+
+
+3. Python operators: arithmetic, comparison, logical, bitwise.
+
+Arithmetic: Perform math operations (+, -, *, /, %, **, //).
+Comparison: Compare values (==, !=, >, <, >=, <=).
+Logical: Combine conditions (and, or, not).
+Bitwise: Operate on bits (&, |, ^, ~, <<, >>).Python operators: arithmetic, comparison, logical, bitwise.
