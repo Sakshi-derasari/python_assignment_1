@@ -25,4 +25,4 @@ print("\nAccessing elements at different index positions:")
 print("Element at index 0:", my_list[0])     # First element
 print("Element at index 2:", my_list[2])     # Third element
 print("Element at index -1:", my_list[-1])   # Last element
-print("Element at index -3:", my_list[-3])   # Third from last
+print("Element at index -3:", my_list[-3])   # Third from lasT
