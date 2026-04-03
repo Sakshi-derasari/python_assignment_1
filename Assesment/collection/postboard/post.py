@@ -4,22 +4,19 @@ from data import posts
 import datetime
 
 
-# ---------------- CREATE POST ----------------
 def create_post(user):
     print("\n--- CREATE POST ---")
 
     title = input("Enter title: ").strip()
     description = input("Enter description: ").strip()
 
-    # validation
+  
     if title == "" or description == "":
         print("Error: Fields cannot be empty!")
         return
 
-    # generate date automatically
     date = datetime.datetime.now().strftime("%Y-%m-%d")
 
-    # create dictionary
     post = {
         "author": user["username"],
         "title": title,
@@ -32,7 +29,6 @@ def create_post(user):
     print("Post created successfully!")
 
 
-# ---------------- VIEW ALL POSTS ----------------
 def view_posts():
     print("\n--- ALL POSTS ---")
 
@@ -40,7 +36,7 @@ def view_posts():
         print("No posts available.")
         return
 
-    # loop through posts
+    # loop 
     for index, post in enumerate(posts, start=1):
         print(f"\nPost Number: {index}")
         print("Author:", post["author"])
@@ -49,7 +45,6 @@ def view_posts():
         print("Description:", post["description"])
 
 
-# ---------------- SEARCH POSTS ----------------
 def search_posts():
     print("\n--- SEARCH POSTS ---")
 
@@ -61,7 +56,7 @@ def search_posts():
 
     found = False
 
-    # loop through posts
+    # loop 
     for post in posts:
         if post["author"] == username:
             print("\n--- FOUND POST ---")
@@ -74,7 +69,6 @@ def search_posts():
         print("No posts found for this user.")
 
 
-# ---------------- UPDATE POST ----------------
 def update_post(user):
     print("\n--- UPDATE POST ---")
 
@@ -90,12 +84,12 @@ def update_post(user):
         print("Invalid input! Enter a number.")
         return
 
-    # check valid index
+
     if choice < 0 or choice >= len(posts):
         print("Invalid post number!")
         return
 
-    # check ownership
+
     if posts[choice]["author"] != user["username"]:
         print("Error: You can only update your own posts!")
         return
@@ -113,7 +107,6 @@ def update_post(user):
     print("Post updated successfully!")
 
 
-# ---------------- DELETE POST ----------------
 def delete_post(user):
     print("\n--- DELETE POST ---")
 
@@ -129,12 +122,10 @@ def delete_post(user):
         print("Invalid input! Enter a number.")
         return
 
-    # check valid index
     if choice < 0 or choice >= len(posts):
         print("Invalid post number!")
         return
 
-    # check ownership
     if posts[choice]["author"] != user["username"]:
         print("Error: You can only delete your own posts!")
         return

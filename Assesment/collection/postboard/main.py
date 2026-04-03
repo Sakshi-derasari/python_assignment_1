@@ -5,26 +5,24 @@ from post import create_post, view_posts, search_posts, update_post, delete_post
 def main():
     while True:
 
-        # -------- MAIN MENU --------
         print("\n=== MAIN MENU ===")
         print("1. Login")
         print("2. Exit")
 
         start_choice = input("Choose option: ")
 
-        # -------- LOGIN --------
         if start_choice == "1":
             user = login()
 
-            # if login cancelled
+            
             if user is None:
                 continue   # go back to main menu
 
-            # -------- USER / STAFF MENU --------
+           
             while True:
                 print("\n--- MENU ---")
 
-                # -------- USER MENU --------
+               
                 if user["role"] == "user":
                     print("1. Create Post")
                     print("2. View Posts")
@@ -52,7 +50,7 @@ def main():
                     else:
                         print("Invalid choice!")
 
-                # -------- STAFF MENU --------
+                
                 elif user["role"] == "staff":
                     print("1. View Posts")
                     print("2. Search Posts")
@@ -74,7 +72,7 @@ def main():
                     else:
                         print("Invalid choice!")
 
-        # -------- FULL EXIT --------
+       
         elif start_choice == "2":
             print("Program terminated.")
             break
