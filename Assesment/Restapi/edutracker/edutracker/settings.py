@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-wa9_e=3-gii%ah&#ht3zn0lz0rp%1y1_w!ymjlq-4b86)(pprs'
+SECRET_KEY = 'django-insecure-n^i+aemfww-#4=1iw1y$b*&(tzysm=408cel(-(q-*s_^apojn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +69,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'edutracker.wsgi.application'
+
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'api.throttling.StudentThrottle',
+        'api.throttling.CourseThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'student': '10/minute',
+        'course': '20/minute',
+    }
+}
 
 
 # Database
