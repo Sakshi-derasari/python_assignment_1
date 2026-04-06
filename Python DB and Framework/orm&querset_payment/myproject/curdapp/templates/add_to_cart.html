@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add To Cart</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: #000000;
+            color: #222;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-bar h3 {
+            margin: 0;
+        }
+
+        /* Cart Icon */
+        .cart-icon {
+            font-size: 22px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.2);
+        }
+
+        /* Page */
+        .page {
+            padding: 30px 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Card */
+        .card {
+            width: 100%;
+            max-width: 420px;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Inputs */
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px;
+            margin-bottom: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #0d6efd;
+            transform: scale(1.02);
+        }
+
+        /* Submit Button (inside card) */
+        .submit-btn {
+            width: 100%;
+            background: #0d6efd;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn i {
+            font-size: 18px;
+        }
+
+        .submit-btn:hover {
+            background: #0b5ed7;
+            transform: translateY(-3px) scale(1.03);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <h3>Add Product</h3>
+
+        <!-- Cart icon (for cart page navigation) -->
+        <div class="cart-icon" title="Go to Cart">
+            <a href="{% url 'cart' %}"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="page">
+        <form action="{% if c %}{% url 'update' %}?uid={{c.id}}{% else %}{% url 'add_to_cart' %}{% endif %}"
+            method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <input type="text" name="product_name" placeholder="Name" value="{{c.product_name}}">
+            <input type="text" name="product_discription" placeholder="Description" value="{{c.product_discription}}">
+            <input type="number" name="product_price" placeholder="Price" value="{{c.product_price}}">
+            <input type="number" name="product_discount" placeholder="Discount" value="{{c.product_discount}}">
+            <input type="number" name="qty" placeholder="Qty" value="{{c.qty}}">
+
+            {% if c and c.img %}
+            <img src="{{ c.img.url }}" width="100">
+            {% endif %}
+
+            <input type="file" name="img">
+
+            <button type="submit">
+                {% if c %}Update{% else %}Add{% endif %}
+            </button>
+        </form>
+    </div>
+</body>
+
+</html>

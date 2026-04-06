@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AJAX CRUD</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <h2>Professional Form</h2>
+
+    <input type="hidden" id="id">
+
+    <input id="username" placeholder="Username"><br><br>
+    <input id="email" placeholder="Email"><br><br>
+    <input id="speciality" placeholder="Speciality"><br><br>
+    <input id="contact" placeholder="Contact"><br><br>
+
+    <button onclick="addData()" id="addBtn">Add</button>
+    <button onclick="updateData()" id="updateBtn" style="display:none;">Update</button>
+
+    <hr>
+
+    <button onclick="loadData()">Show Data</button>
+
+    <ul id="list"></ul>
+
+    <script>
+
+        // LOAD DATA
+        function loadData() {
+            $.get('show', function (res) {
+                let rows = "";
+                res.data.forEach(d => {
+                    rows += `<li>
+                ${d.username} | ${d.email} | ${d.speciality} | ${d.contact_number}
+                <button onclick="edit(${d.id})">Edit</button>
+                <button onclick="del(${d.id})">Delete</button>
+            </li>`;
+                });
+                $("#list").html(rows);
+            });
+        }
+
+        // ADD
+        function addData() {
+            $.get('add', {
+                username: $("#username").val(),
+                email: $("#email").val(),
+                speciality: $("#speciality").val(),
+                contact: $("#contact").val()
+            }, function (res) {
+                alert(res.msg);
+                loadData();
+            });
+        }
+
+        // DELETE
+        function del(id) {
+            $.get('delete', { id: id }, function (res) {
+                alert(res.msg);
+                loadData();
+            });
+        }
+
+        // EDIT (GET DATA)
+        function edit(id) {
+            $.get('getone', { id: id }, function (res) {
+                let d = res.data[0];
+
+                $("#id").val(d.id);
+                $("#username").val(d.username);
+                $("#email").val(d.email);
+                $("#speciality").val(d.speciality);
+                $("#contact").val(d.contact_number);
+
+                $("#addBtn").hide();
+                $("#updateBtn").show();
+            });
+        }
+
+        // UPDATE
+        function updateData() {
+            $.get('update', {
+                id: $("#id").val(),
+                username: $("#username").val(),
+                email: $("#email").val(),
+                speciality: $("#speciality").val(),
+                contact: $("#contact").val()
+            }, function (res) {
+                alert(res.msg);
+                loadData();
+
+                $("#addBtn").show();
+                $("#updateBtn").hide();
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>

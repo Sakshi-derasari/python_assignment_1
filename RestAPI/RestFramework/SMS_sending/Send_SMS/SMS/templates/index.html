@@ -1,0 +1,14 @@
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="phone" placeholder="Enter phone number" required>
+    <input type="text" name="message" placeholder="Enter message" required>
+    <button type="submit">Send SMS</button>
+</form>
+
+{% if success %}
+<p style="color:green;">{{ success }}</p>
+{% endif %}
+
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}

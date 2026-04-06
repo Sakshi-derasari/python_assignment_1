@@ -1,0 +1,6 @@
+Write a requirements.txt file for a Django project that includes all necessary dependencies.
+Create a Django REST API with serialization for a employess mode
+Create a Django REST API that accepts POST requests to add new employess profiles
+Implement a class-based view in DRF for managing employess profiles
+Set up URL routing in a Django project to link to CRUD API endpoints for employesss
+Implement pagination in a Django REST API for fetching employess profiles

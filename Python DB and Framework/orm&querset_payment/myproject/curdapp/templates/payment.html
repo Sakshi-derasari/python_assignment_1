@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+</head>
+<body>
+
+<h2>Pay ₹{{ amount }}</h2>
+
+<form action="/success/" method="POST">
+    {% csrf_token %}
+
+    <script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        data-key="{{ key }}"
+        data-amount="{{ amount }}00"
+        data-currency="INR"
+        data-order_id="{{ order_id }}"
+        data-buttontext="Pay Now"
+        data-name="My Shop"
+        data-description="Cart Payment"
+        data-theme.color="#3399cc">
+    </script>
+
+</form>
+
+</body>
+</html>

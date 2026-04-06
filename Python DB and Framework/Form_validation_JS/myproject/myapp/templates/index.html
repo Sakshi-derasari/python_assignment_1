@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User Registration</title>
+    <script src="{% static 'js/validation.js' %}"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 350px;
+            margin: 80px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h2>Register</h2>
+
+        <form method="POST" onsubmit="return validateForm()">
+            {% csrf_token %}
+
+            <label>Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+
+            <label>Email:</label>
+            <input type="text" id="email" name="email" placeholder="Enter your email">
+
+            <label>Phone:</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter phone number">
+
+            <button type="submit" onclick="return validateForm()">Register</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

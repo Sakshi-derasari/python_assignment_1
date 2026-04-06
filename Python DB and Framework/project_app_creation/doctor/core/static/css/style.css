@@ -1,0 +1,193 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================= BODY ================= */
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+}
+
+/* ================= HEADER ================= */
+h1 {
+    margin: 20px 0;
+    font-size: 32px;
+}
+
+/* ================= NAVBAR ================= */
+nav {
+    background: #1e293b;
+    padding: 12px;
+}
+
+nav a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #38bdf8;
+}
+
+/* ================= GRID ================= */
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 20px;
+}
+
+/* ================= CARD ================= */
+.card {
+    background: #1e293b;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+    animation: fadeInUp 0.6s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover */
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+}
+
+/* ================= IMAGE FIX (NO CUT) ================= */
+.image-box {
+    height: 220px;
+    width: 100%;
+    background: #020617;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+/* IMPORTANT FIX */
+.image-box img {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+
+    object-fit: contain;
+    /* ✅ no cropping */
+    transition: transform 0.4s ease;
+}
+
+/* Zoom */
+.card:hover .image-box img {
+    transform: scale(1.05);
+}
+
+/* ================= CARD BODY ================= */
+.card-body {
+    padding: 15px;
+    text-align: left;
+}
+
+/* Name */
+.card h3 {
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
+/* Text */
+.card p {
+    margin: 6px 0;
+    font-size: 14px;
+}
+
+/* Highlight labels */
+.card strong {
+    color: #38bdf8;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #38bdf8;
+    color: black;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background: #0ea5e9;
+}
+
+.delete {
+    background: #ef4444;
+    color: white;
+}
+
+.delete:hover {
+    background: #dc2626;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    /* hidden */
+    width: 350px;
+    height: 100%;
+    background: #1e293b;
+    padding: 20px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    transition: right 0.4s ease;
+    z-index: 1000;
+}
+
+/* When open */
+.sidebar.active {
+    right: 0;
+}
+
+/* Inputs */
+.sidebar input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: none;
+}

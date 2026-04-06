@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TOPS Locations - {{ city }}</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX29A9aV3AVBvQYsOdP7koYvDC2uSDVCI"></script>
+</head>
+
+<body>
+
+    <h2>TOPS Technologies Locations in {{ city }}</h2>
+
+    <div id="map" style="height: 500px; width: 100%;"></div>
+
+    <script>
+        const locations = {{ locations|safe }};
+
+        function initMap() {
+            const center = locations.length > 0
+                ? { lat: locations[0].latitude, lng: locations[0].longitude }
+                : { lat: 20.5937, lng: 78.9629 };
+
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: center
+            });
+
+            locations.forEach(loc => {
+                new google.maps.Marker({
+                    position: { lat: loc.latitude, lng: loc.longitude },
+                    map: map,
+                    title: loc.name
+                });
+            });
+        }
+
+        window.onload = initMap;
+    </script>
+
+</body>
+
+</html>

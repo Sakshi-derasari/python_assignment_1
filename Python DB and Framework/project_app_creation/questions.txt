@@ -1,0 +1,5 @@
+Write a short project using Django’s built-in tools to render a simple webpage.
+Set up a virtual environment for a Django project
+Create a Django project with an app to manage doctor profiles
+Build a simple Django app showcasing how the MVT architecture works
+Set up and customize the Django admin panel to manage a "Doctor Finder" project

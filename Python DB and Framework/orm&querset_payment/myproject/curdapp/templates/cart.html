@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #000000, #0a0a0a, #0d0d0d);
+            color: #fff;
+            padding: 40px;
+        }
+
+        /* Home Icon */
+        .home-icon {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            font-size: 26px;
+            color: #00e5ff;
+            text-decoration: none;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* Card */
+        .card {
+            height: 420px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(28, 28, 28, 0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Card Top (Image) */
+        .card-img {
+            height: 40%;
+            background: #342828;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-img img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+
+        /* Card Middle (Details) */
+        .card-body {
+            height: 40%;
+            padding: 15px;
+        }
+
+        .card-body h3 {
+            margin: 0 0 8px;
+            font-size: 18px;
+            color: #00e5ff;
+        }
+
+        .card-body p {
+            font-size: 14px;
+            opacity: 0.85;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            color: #00ff9d;
+            font-weight: bold;
+        }
+
+        .discount {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        /* Card Bottom (Actions) */
+        .card-footer {
+            height: 20%;
+            padding: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total {
+            color: #ffd369;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .btn {
+            background: #00e5ff;
+            color: #000;
+            padding: 6px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="{% url 'add_to_cart' %}" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <h1>🛒 Your Cart</h1>
+
+    <div class="card-grid">
+        {% for c in cart %}
+        <div>
+            <img src="{{ c.img.url }}" width="100">
+
+            <h3>{{ c.product_name }}</h3>
+            <p>{{ c.product_discription }}</p>
+
+            <p>Qty: {{ c.qty }}</p>
+            <p>Price: ₹{{ c.product_price }}</p>
+            <p>Discount: {{ c.product_discount }}%</p>
+
+            <h4>Total: ₹{{ c.totale_price }}</h4>
+
+            <a href="{% url 'update' %}?uid={{c.id}}">Edit</a>
+            <a href="{% url 'delete' %}?did={{c.id}}">Delete</a>
+            <a href="/payment?amt={{ total }}" class="btn">Pay Now</a>
+        </div>
+        <hr>
+        {% endfor %}
+
+        <h2>Grand Total: ₹{{ total }}</h2>
+    </div>
+
+</body>
+
+</html>
