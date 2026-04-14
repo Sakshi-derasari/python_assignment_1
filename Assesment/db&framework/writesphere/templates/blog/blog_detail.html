@@ -1,0 +1,39 @@
+<h2>{{ blog.title }}</h2>
+<p>{{ blog.content }}</p>
+
+<!-- ✅ LIKE BUTTON -->
+<form action="{% url 'toggle_like' blog.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">
+        {% if liked %}
+            ❤️ Unlike
+        {% else %}
+            🤍 Like
+        {% endif %}
+    </button>
+</form>
+
+<p>Total Likes: {{ likes_count }}</p>
+
+<hr>
+
+<!-- ✅ COMMENT FORM -->
+<h3>Add Comment</h3>
+<form method="post" action="{% url 'add_comment' blog.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Post Comment</button>
+</form>
+
+<hr>
+
+<!-- ✅ COMMENTS LIST -->
+<h3>Comments</h3>
+
+{% for comment in comments %}
+    <p><b>{{ comment.user.username }}</b>: {{ comment.text }}</p>
+
+    {% if comment.user == request.user %}
+        <a href="{% url 'delete_comment' comment.id %}">Delete</a>
+    {% endif %}
+{% endfor %}
