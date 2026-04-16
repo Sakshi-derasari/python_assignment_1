@@ -1,9 +1,17 @@
-<h2>Register</h2>
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-</form>
+{% block content %}
 
-<a href="{% url 'login' %}">Already have account? Login</a>
+<div class="card" style="max-width:400px;margin:auto;">
+    <h2>Create Account</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+
+</div>
+
+{% endblock %}

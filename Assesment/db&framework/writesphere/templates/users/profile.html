@@ -1,25 +1,23 @@
-<h2>{{ user_profile.username }}'s Profile</h2>
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
 
-<p>Followers: {{ followers }}</p>
-<p>Following: {{ following }}</p>
+{% block content %}
 
-{% if request.user != user_profile %}
-<form method="post" action="{% url 'toggle_follow' user_profile.id %}">
-    {% csrf_token %}
-    <button type="submit">
-        {% if is_following %}
-            Unfollow
-        {% else %}
-            Follow
-        {% endif %}
-    </button>
-</form>
-{% endif %}
+<div class="card">
+    <h2>{{ user_profile.username }}</h2>
 
-<hr>
+    <p>Followers: {{ followers }}</p>
+    <p>Following: {{ following }}</p>
 
-<h3>Posts</h3>
+    {% if request.user != user_profile %}
+    <form method="post">
+        {% csrf_token %}
+        <button>
+            {% if is_following %}Unfollow{% else %}Follow{% endif %}
+        </button>
+    </form>
+    {% endif %}
 
-{% for post in posts %}
-    <h4>{{ post.title }}</h4>
-{% endfor %}
+</div>
+
+{% endblock %}

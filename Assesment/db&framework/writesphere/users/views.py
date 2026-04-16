@@ -4,6 +4,7 @@ from .forms import *
 from blog.models import Post
 from interactions.models import Follow
 from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 
 def profile_view(request, user_id):
     user_profile = get_object_or_404(User, id=user_id)
@@ -42,7 +43,7 @@ def login_view(request):
 
         if user:
             login(request, user)
-            return redirect('blog_list')
+            return redirect('blog_detail')
 
     return render(request, 'users/login.html')
 

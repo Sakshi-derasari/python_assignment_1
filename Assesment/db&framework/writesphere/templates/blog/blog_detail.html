@@ -1,39 +1,29 @@
-<h2>{{ blog.title }}</h2>
-<p>{{ blog.content }}</p>
+{% extends 'base.html' %}
+{% block title %}{{ blog.title }}{% endblock %}
 
-<!-- ✅ LIKE BUTTON -->
-<form action="{% url 'toggle_like' blog.id %}" method="post">
-    {% csrf_token %}
-    <button type="submit">
-        {% if liked %}
-            ❤️ Unlike
-        {% else %}
-            🤍 Like
-        {% endif %}
-    </button>
-</form>
+{% block content %}
 
-<p>Total Likes: {{ likes_count }}</p>
+<div class="card">
+    <h2>{{ blog.title }}</h2>
 
-<hr>
+    <p>{{ blog.content }}</p>
 
-<!-- ✅ COMMENT FORM -->
-<h3>Add Comment</h3>
-<form method="post" action="{% url 'add_comment' blog.id %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Post Comment</button>
-</form>
+    <form method="post" action="{% url 'toggle_like' blog.id %}">
+        {% csrf_token %}
+        <button>
+            {% if liked %}❤️ Unlike{% else %}🤍 Like{% endif %}
+        </button>
+    </form>
 
-<hr>
+    <p>Total Likes: {{ likes_count }}</p>
+</div>
 
-<!-- ✅ COMMENTS LIST -->
-<h3>Comments</h3>
+<div class="card">
+    <h3>Comments</h3>
 
-{% for comment in comments %}
+    {% for comment in comments %}
     <p><b>{{ comment.user.username }}</b>: {{ comment.text }}</p>
+    {% endfor %}
+</div>
 
-    {% if comment.user == request.user %}
-        <a href="{% url 'delete_comment' comment.id %}">Delete</a>
-    {% endif %}
-{% endfor %}
+{% endblock %}

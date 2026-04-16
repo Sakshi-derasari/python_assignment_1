@@ -1,7 +1,21 @@
-<h1>All Blogs</h1>
+{% extends 'base.html' %}
+{% block title %}All Blogs{% endblock %}
 
-{% for blog in blogs %}
-    <h3>{{ blog.title }}</h3>
-    <p>{{ blog.content|truncatewords:20 }}</p>
-    <a href="{% url 'blog_detail' blog.id %}">Read More</a>
-{% endfor %}
+{% block content %}
+
+<h1 style="text-align:center;color:white;">All Blogs</h1>
+
+<div class="grid">
+    {% for blog in blogs %}
+    <div class="card">
+        <h3>{{ blog.title }}</h3>
+        <p>{{ blog.content|truncatewords:20 }}</p>
+
+        <a href="{% url 'blog_detail' blog.id %}">Read More →</a>
+    </div>
+    {% empty %}
+    <p style="color:white;text-align:center;">No blogs found</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
